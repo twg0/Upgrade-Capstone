@@ -1,7 +1,7 @@
 package com.twg0.upgradecapstone.user.repository;
 
-import static com.timcook.capstone.user.domain.QUser.*;
-import static com.timcook.capstone.village.domain.QVillage.*;
+import static com.twg0.upgradecapstone.user.domain.QUser.*;
+import static com.twg0.upgradecapstone.village.domain.QVillage.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 import com.nimbusds.oauth2.sdk.util.StringUtils;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.timcook.capstone.user.dto.QUserResponse;
-import com.timcook.capstone.user.dto.UserResponse;
+import com.twg0.upgradecapstone.user.dto.QUserResponse;
+import com.twg0.upgradecapstone.user.dto.UserResponse;
 
 import lombok.RequiredArgsConstructor;
 

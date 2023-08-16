@@ -1,8 +1,8 @@
 package com.twg0.upgradecapstone.message.repository.urgent;
 
-import static com.timcook.capstone.device.domain.QDevice.*;
-import static com.timcook.capstone.message.domain.QUrgentMessage.*;
-import static com.timcook.capstone.user.domain.QUser.*;
+import static com.twg0.upgradecapstone.device.domain.QDevice.*;
+import static com.twg0.upgradecapstone.message.domain.QUrgentMessage.*;
+import static com.twg0.upgradecapstone.user.domain.QUser.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,11 +10,11 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.message.domain.UrgentMessage;
-import com.timcook.capstone.message.dto.UrgentMessageReponse;
-import com.timcook.capstone.user.domain.User;
-import com.timcook.capstone.user.repository.UserRepository;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.message.domain.UrgentMessage;
+import com.twg0.upgradecapstone.message.dto.UrgentMessageReponse;
+import com.twg0.upgradecapstone.user.domain.User;
+import com.twg0.upgradecapstone.user.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

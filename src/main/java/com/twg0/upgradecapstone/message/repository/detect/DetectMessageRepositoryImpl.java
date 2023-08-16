@@ -1,8 +1,8 @@
 package com.twg0.upgradecapstone.message.repository.detect;
 
-import static com.timcook.capstone.device.domain.QDevice.*;
-import static com.timcook.capstone.message.domain.QDetectMessage.*;
-import static com.timcook.capstone.user.domain.QUser.*;
+import static com.twg0.upgradecapstone.device.domain.QDevice.*;
+import static com.twg0.upgradecapstone.message.domain.QDetectMessage.*;
+import static com.twg0.upgradecapstone.user.domain.QUser.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -11,7 +11,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.timcook.capstone.message.domain.DetectMessage;
+import com.twg0.upgradecapstone.message.domain.DetectMessage;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,21 +1,21 @@
 package com.twg0.upgradecapstone.device.repository;
 
-import static com.timcook.capstone.device.domain.QConfirm.*;
-import static com.timcook.capstone.device.domain.QDisabled.*;
-import static com.timcook.capstone.device.domain.QUnconfirm.*;
+import static com.twg0.upgradecapstone.device.domain.QConfirm.*;
+import static com.twg0.upgradecapstone.device.domain.QDisabled.*;
+import static com.twg0.upgradecapstone.device.domain.QUnconfirm.*;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.timcook.capstone.device.dto.ConfirmResponse;
-import com.timcook.capstone.device.dto.DisabledResponse;
-import com.timcook.capstone.device.dto.QConfirmResponse;
-import com.timcook.capstone.device.dto.QDisabledResponse;
-import com.timcook.capstone.device.dto.QUnconfirmResponse;
-import com.timcook.capstone.device.dto.UnconfirmResponse;
-import com.timcook.capstone.file.repository.FileRepository;
+import com.twg0.upgradecapstone.device.dto.ConfirmResponse;
+import com.twg0.upgradecapstone.device.dto.DisabledResponse;
+import com.twg0.upgradecapstone.device.dto.QConfirmResponse;
+import com.twg0.upgradecapstone.device.dto.QDisabledResponse;
+import com.twg0.upgradecapstone.device.dto.QUnconfirmResponse;
+import com.twg0.upgradecapstone.device.dto.UnconfirmResponse;
+import com.twg0.upgradecapstone.file.repository.FileRepository;
 
 import lombok.RequiredArgsConstructor;
 

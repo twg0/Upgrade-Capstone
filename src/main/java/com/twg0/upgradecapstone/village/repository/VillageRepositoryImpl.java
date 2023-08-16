@@ -1,11 +1,11 @@
 package com.twg0.upgradecapstone.village.repository;
 
-import static com.timcook.capstone.device.domain.QDevice.*;
-import static com.timcook.capstone.file.domain.QFile.*;
-import static com.timcook.capstone.message.domain.QDetectMessage.*;
-import static com.timcook.capstone.message.domain.QUrgentMessage.*;
-import static com.timcook.capstone.user.domain.QUser.*;
-import static com.timcook.capstone.village.domain.QVillage.*;
+import static com.twg0.upgradecapstone.device.domain.QDevice.*;
+import static com.twg0.upgradecapstone.file.domain.QFile.*;
+import static com.twg0.upgradecapstone.message.domain.QDetectMessage.*;
+import static com.twg0.upgradecapstone.message.domain.QUrgentMessage.*;
+import static com.twg0.upgradecapstone.user.domain.QUser.*;
+import static com.twg0.upgradecapstone.village.domain.QVillage.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,16 +16,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.nimbusds.oauth2.sdk.util.StringUtils;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.timcook.capstone.device.dto.DeviceResponse;
-import com.timcook.capstone.file.dto.FileResponse;
-import com.timcook.capstone.file.repository.FileRepository;
-import com.timcook.capstone.message.domain.DetectMessage;
-import com.timcook.capstone.message.domain.UrgentMessage;
-import com.timcook.capstone.message.dto.DetectMessageResponse;
-import com.timcook.capstone.message.dto.UrgentMessageReponse;
-import com.timcook.capstone.user.dto.UserResponse;
-import com.timcook.capstone.village.domain.Village;
-import com.timcook.capstone.village.dto.VillageResponse;
+import com.twg0.upgradecapstone.device.dto.DeviceResponse;
+import com.twg0.upgradecapstone.file.dto.FileResponse;
+import com.twg0.upgradecapstone.file.repository.FileRepository;
+import com.twg0.upgradecapstone.message.domain.DetectMessage;
+import com.twg0.upgradecapstone.message.domain.UrgentMessage;
+import com.twg0.upgradecapstone.message.dto.DetectMessageResponse;
+import com.twg0.upgradecapstone.message.dto.UrgentMessageReponse;
+import com.twg0.upgradecapstone.user.dto.UserResponse;
+import com.twg0.upgradecapstone.village.domain.Village;
+import com.twg0.upgradecapstone.village.dto.VillageResponse;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
