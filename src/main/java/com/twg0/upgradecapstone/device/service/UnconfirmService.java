@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.device.domain.Unconfirm;
-import com.timcook.capstone.device.repository.DeviceRepository;
-import com.timcook.capstone.device.repository.UnconfirmRepository;
-import com.timcook.capstone.file.domain.File;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.device.domain.Unconfirm;
+import com.twg0.upgradecapstone.device.repository.DeviceRepository;
+import com.twg0.upgradecapstone.device.repository.UnconfirmRepository;
+import com.twg0.upgradecapstone.file.domain.File;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

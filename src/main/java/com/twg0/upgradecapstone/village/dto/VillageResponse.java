@@ -3,9 +3,9 @@ package com.twg0.upgradecapstone.village.dto;
 import java.util.Optional;
 
 import com.querydsl.core.annotations.QueryProjection;
-import com.timcook.capstone.admin.dto.AdminResponse;
-import com.timcook.capstone.village.domain.Location;
-import com.timcook.capstone.village.domain.Village;
+import com.twg0.upgradecapstone.admin.dto.AdminResponse;
+import com.twg0.upgradecapstone.village.domain.Location;
+import com.twg0.upgradecapstone.village.domain.Village;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -2,12 +2,11 @@ package com.twg0.upgradecapstone.user.dto;
 
 import java.util.UUID;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import com.twg0.upgradecapstone.user.domain.Role;
+import com.twg0.upgradecapstone.user.domain.User;
 
-import com.timcook.capstone.user.domain.Role;
-import com.timcook.capstone.user.domain.User;
-
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,10 +1,9 @@
 package com.twg0.upgradecapstone.admin.dto;
 
-import javax.validation.constraints.NotNull;
+import com.twg0.upgradecapstone.admin.domain.Admin;
+import com.twg0.upgradecapstone.user.domain.Role;
 
-import com.timcook.capstone.admin.domain.Admin;
-import com.timcook.capstone.user.domain.Role;
-
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

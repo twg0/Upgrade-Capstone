@@ -3,29 +3,28 @@ package com.twg0.upgradecapstone.file.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.EntityManager;
-
 import org.springframework.data.util.Pair;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.timcook.capstone.admin.domain.Admin;
-import com.timcook.capstone.admin.repository.AdminRepository;
-import com.timcook.capstone.common.mqtt.MqttBuffer;
-import com.timcook.capstone.common.mqtt.MqttConfig.OutboundGateWay;
-import com.timcook.capstone.common.mqtt.MqttUtils;
-import com.timcook.capstone.device.repository.DeviceRepository;
-import com.timcook.capstone.device.service.DisabledService;
-import com.timcook.capstone.device.service.UnconfirmService;
-import com.timcook.capstone.file.domain.File;
-import com.timcook.capstone.file.dto.FileCreateRequest;
-import com.timcook.capstone.file.repository.FileRepository;
-import com.timcook.capstone.message.domain.MessageType;
-import com.timcook.capstone.message.dto.BroadcastMessage;
-import com.timcook.capstone.village.domain.Village;
-import com.timcook.capstone.village.repository.VillageRepository;
+import com.twg0.upgradecapstone.admin.domain.Admin;
+import com.twg0.upgradecapstone.admin.repository.AdminRepository;
+import com.twg0.upgradecapstone.common.mqtt.MqttBuffer;
+import com.twg0.upgradecapstone.common.mqtt.MqttConfig;
+import com.twg0.upgradecapstone.common.mqtt.MqttUtils;
+import com.twg0.upgradecapstone.device.repository.DeviceRepository;
+import com.twg0.upgradecapstone.device.service.DisabledService;
+import com.twg0.upgradecapstone.device.service.UnconfirmService;
+import com.twg0.upgradecapstone.file.domain.File;
+import com.twg0.upgradecapstone.file.dto.FileCreateRequest;
+import com.twg0.upgradecapstone.file.repository.FileRepository;
+import com.twg0.upgradecapstone.message.domain.MessageType;
+import com.twg0.upgradecapstone.message.dto.BroadcastMessage;
+import com.twg0.upgradecapstone.village.domain.Village;
+import com.twg0.upgradecapstone.village.repository.VillageRepository;
 
+import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,7 +43,7 @@ public class FileService {
 	private final AdminRepository adminRepository;
 	private final VillageRepository villageRepository;
 	private final DeviceRepository deviceRepository;
-	private final OutboundGateWay outboundGateWay;
+	private final MqttConfig.OutboundGateWay outboundGateWay;
 	private final EntityManager em;
 
 	

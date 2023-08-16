@@ -2,7 +2,7 @@ package com.twg0.upgradecapstone.message.dto;
 
 import java.time.LocalDateTime;
 
-import com.timcook.capstone.message.domain.DetectMessage;
+import com.twg0.upgradecapstone.message.domain.DetectMessage;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

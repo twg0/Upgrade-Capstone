@@ -7,15 +7,15 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.timcook.capstone.admin.domain.Admin;
-import com.timcook.capstone.admin.dto.AdminResponse;
-import com.timcook.capstone.admin.repository.AdminRepository;
-import com.timcook.capstone.admin.repository.AdminRepositoryImpl;
-import com.timcook.capstone.file.dto.FileResponse;
-import com.timcook.capstone.user.domain.User;
-import com.timcook.capstone.user.dto.UserResponse;
-import com.timcook.capstone.user.repository.UserRepository;
-import com.timcook.capstone.village.dto.VillageResponse;
+import com.twg0.upgradecapstone.admin.domain.Admin;
+import com.twg0.upgradecapstone.admin.dto.AdminResponse;
+import com.twg0.upgradecapstone.admin.repository.AdminRepository;
+import com.twg0.upgradecapstone.admin.repository.AdminRepositoryImpl;
+import com.twg0.upgradecapstone.file.dto.FileResponse;
+import com.twg0.upgradecapstone.user.domain.User;
+import com.twg0.upgradecapstone.user.dto.UserResponse;
+import com.twg0.upgradecapstone.user.repository.UserRepository;
+import com.twg0.upgradecapstone.village.dto.VillageResponse;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -3,7 +3,7 @@ package com.twg0.upgradecapstone.message.dto;
 import java.time.LocalDateTime;
 
 import com.querydsl.core.annotations.QueryProjection;
-import com.timcook.capstone.message.domain.UrgentMessage;
+import com.twg0.upgradecapstone.message.domain.UrgentMessage;
 
 import lombok.Builder;
 import lombok.Data;

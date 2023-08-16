@@ -1,6 +1,6 @@
 package com.twg0.upgradecapstone.message.dto;
 
-import com.timcook.capstone.message.domain.MessageType;
+import com.twg0.upgradecapstone.message.domain.MessageType;
 
 import lombok.Builder;
 import lombok.Getter;

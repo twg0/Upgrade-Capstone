@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.device.domain.Disabled;
-import com.timcook.capstone.device.repository.DeviceRepository;
-import com.timcook.capstone.device.repository.DisabledRepository;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.device.domain.Disabled;
+import com.twg0.upgradecapstone.device.repository.DeviceRepository;
+import com.twg0.upgradecapstone.device.repository.DisabledRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -2,7 +2,7 @@ package com.twg0.upgradecapstone.message.dto;
 
 import java.util.List;
 
-import com.timcook.capstone.message.domain.MessageFormat;
+import com.twg0.upgradecapstone.message.domain.MessageFormat;
 
 import lombok.Builder;
 import lombok.Getter;

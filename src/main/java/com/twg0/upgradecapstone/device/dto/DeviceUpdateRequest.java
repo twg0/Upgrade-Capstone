@@ -1,11 +1,10 @@
 package com.twg0.upgradecapstone.device.dto;
 
-import javax.validation.constraints.NotNull;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.user.domain.User;
+import com.twg0.upgradecapstone.village.domain.Village;
 
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.user.domain.User;
-import com.timcook.capstone.village.domain.Village;
-
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

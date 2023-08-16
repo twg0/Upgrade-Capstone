@@ -5,8 +5,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.timcook.capstone.user.domain.User;
-import com.timcook.capstone.user.repository.UserRepository;
+import com.twg0.upgradecapstone.user.domain.User;
+import com.twg0.upgradecapstone.user.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class PrincipalDetailsService implements UserDetailsService{
 		
 		log.info("email :: {}",email);
 		
-		User user = userRepository.findByEmail(email) 
+		User user = userRepository.findByEmail(email)
 								.orElseThrow(() -> new IllegalArgumentException("없음"));
 			
 		log.info("LOAD USER BY USERNAME = USER : {}, {}",user.getEmail(), user.getPassword());

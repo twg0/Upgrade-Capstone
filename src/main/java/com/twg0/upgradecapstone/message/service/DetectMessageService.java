@@ -7,14 +7,14 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.timcook.capstone.message.domain.DetectMessage;
-import com.timcook.capstone.message.dto.DetectMessageCreateRequest;
-import com.timcook.capstone.message.dto.DetectMessageResponse;
-import com.timcook.capstone.message.repository.detect.DetectMessageRepository;
-import com.timcook.capstone.message.repository.detect.DetectMessageRepositoryImpl;
-import com.timcook.capstone.notification.dto.NotificationRequest;
-import com.timcook.capstone.notification.service.NotificationService;
-import com.timcook.capstone.user.domain.User;
+import com.twg0.upgradecapstone.message.domain.DetectMessage;
+import com.twg0.upgradecapstone.message.dto.DetectMessageCreateRequest;
+import com.twg0.upgradecapstone.message.dto.DetectMessageResponse;
+import com.twg0.upgradecapstone.message.repository.detect.DetectMessageRepository;
+import com.twg0.upgradecapstone.message.repository.detect.DetectMessageRepositoryImpl;
+import com.twg0.upgradecapstone.notification.dto.NotificationRequest;
+import com.twg0.upgradecapstone.notification.service.NotificationService;
+import com.twg0.upgradecapstone.user.domain.User;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

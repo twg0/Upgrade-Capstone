@@ -1,13 +1,12 @@
 package com.twg0.upgradecapstone.village.dto;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import com.twg0.upgradecapstone.village.domain.Address;
+import com.twg0.upgradecapstone.village.domain.Location;
+import com.twg0.upgradecapstone.village.domain.Village;
 
-import com.timcook.capstone.village.domain.Address;
-import com.timcook.capstone.village.domain.Location;
-import com.timcook.capstone.village.domain.Village;
-
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

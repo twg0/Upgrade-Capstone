@@ -1,7 +1,7 @@
 package com.twg0.upgradecapstone.user.dto;
 
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.user.domain.User;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.user.domain.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

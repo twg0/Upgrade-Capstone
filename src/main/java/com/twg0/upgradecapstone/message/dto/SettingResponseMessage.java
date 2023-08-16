@@ -1,6 +1,6 @@
 package com.twg0.upgradecapstone.message.dto;
 
-import com.timcook.capstone.message.domain.MessageType;
+import com.twg0.upgradecapstone.message.domain.MessageType;
 
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +22,7 @@ public class SettingResponseMessage {
 	}
 	
 	public static String connectFailPayload() {
-		return MessageType.SETTING.name() + "/-1"; 
+		return MessageType.SETTING.name() + "/-1";
 	}
 	
 	public static String connectSuccessPayload(SettingResponseMessage message) {

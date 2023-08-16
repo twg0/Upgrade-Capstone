@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.timcook.capstone.message.domain.UrgentMessage;
-import com.timcook.capstone.message.dto.UrgentMessageCreateRequest;
-import com.timcook.capstone.message.dto.UrgentMessageReponse;
-import com.timcook.capstone.message.repository.urgent.UrgentMessageRepository;
-import com.timcook.capstone.message.repository.urgent.UrgentMessageRepositoryImpl;
-import com.timcook.capstone.notification.dto.NotificationRequest;
-import com.timcook.capstone.notification.service.NotificationService;
-import com.timcook.capstone.user.domain.User;
+import com.twg0.upgradecapstone.message.domain.UrgentMessage;
+import com.twg0.upgradecapstone.message.dto.UrgentMessageCreateRequest;
+import com.twg0.upgradecapstone.message.dto.UrgentMessageReponse;
+import com.twg0.upgradecapstone.message.repository.urgent.UrgentMessageRepository;
+import com.twg0.upgradecapstone.message.repository.urgent.UrgentMessageRepositoryImpl;
+import com.twg0.upgradecapstone.notification.dto.NotificationRequest;
+import com.twg0.upgradecapstone.notification.service.NotificationService;
+import com.twg0.upgradecapstone.user.domain.User;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

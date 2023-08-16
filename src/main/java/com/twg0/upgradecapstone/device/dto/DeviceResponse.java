@@ -1,8 +1,8 @@
 package com.twg0.upgradecapstone.device.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.user.dto.UserResponse;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.user.dto.UserResponse;
 
 import lombok.Data;
 

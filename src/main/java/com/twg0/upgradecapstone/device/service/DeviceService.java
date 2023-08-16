@@ -7,21 +7,21 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.device.dto.ConfirmResponse;
-import com.timcook.capstone.device.dto.DeviceRegisterUserRequest;
-import com.timcook.capstone.device.dto.DeviceRegisterVillageRequest;
-import com.timcook.capstone.device.dto.DeviceResponse;
-import com.timcook.capstone.device.dto.DisabledResponse;
-import com.timcook.capstone.device.dto.UnconfirmResponse;
-import com.timcook.capstone.device.repository.DeviceRepository;
-import com.timcook.capstone.device.repository.DeviceRepositoryImpl;
-import com.timcook.capstone.message.dto.SettingRequestMessage;
-import com.timcook.capstone.message.dto.SettingResponseMessage;
-import com.timcook.capstone.user.domain.User;
-import com.timcook.capstone.user.repository.UserRepository;
-import com.timcook.capstone.village.domain.Village;
-import com.timcook.capstone.village.repository.VillageRepository;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.device.dto.ConfirmResponse;
+import com.twg0.upgradecapstone.device.dto.DeviceRegisterUserRequest;
+import com.twg0.upgradecapstone.device.dto.DeviceRegisterVillageRequest;
+import com.twg0.upgradecapstone.device.dto.DeviceResponse;
+import com.twg0.upgradecapstone.device.dto.DisabledResponse;
+import com.twg0.upgradecapstone.device.dto.UnconfirmResponse;
+import com.twg0.upgradecapstone.device.repository.DeviceRepository;
+import com.twg0.upgradecapstone.device.repository.DeviceRepositoryImpl;
+import com.twg0.upgradecapstone.message.dto.SettingRequestMessage;
+import com.twg0.upgradecapstone.message.dto.SettingResponseMessage;
+import com.twg0.upgradecapstone.user.domain.User;
+import com.twg0.upgradecapstone.user.repository.UserRepository;
+import com.twg0.upgradecapstone.village.domain.Village;
+import com.twg0.upgradecapstone.village.repository.VillageRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -76,7 +76,7 @@ public class DeviceService {
 	}
 	
 	@Transactional
-	public DeviceResponse registerUser(Long id ,DeviceRegisterUserRequest deviceRegisterUserRequest) {
+	public DeviceResponse registerUser(Long id , DeviceRegisterUserRequest deviceRegisterUserRequest) {
 		Device device = deviceRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("해당 단말기가 존재하지 않습니다."));
 		User user = userRepository.findById(deviceRegisterUserRequest.getUserId())
@@ -89,7 +89,7 @@ public class DeviceService {
 	}
 	
 	@Transactional
-	public DeviceResponse registerVillage(Long id ,DeviceRegisterVillageRequest deviceRegisterVillageRequest) {
+	public DeviceResponse registerVillage(Long id , DeviceRegisterVillageRequest deviceRegisterVillageRequest) {
 		Device device = deviceRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("해당 단말기가 존재하지 않습니다."));
 		Village village = villageRepository.findById(deviceRegisterVillageRequest.getVillageId())

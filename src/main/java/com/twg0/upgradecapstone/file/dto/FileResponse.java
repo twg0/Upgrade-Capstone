@@ -3,7 +3,7 @@ package com.twg0.upgradecapstone.file.dto;
 import java.time.LocalDateTime;
 
 import com.querydsl.core.annotations.QueryProjection;
-import com.timcook.capstone.file.domain.File;
+import com.twg0.upgradecapstone.file.domain.File;
 
 import lombok.Builder;
 import lombok.Getter;

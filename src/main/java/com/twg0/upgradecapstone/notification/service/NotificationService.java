@@ -6,8 +6,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.timcook.capstone.common.firebase.FCMService;
-import com.timcook.capstone.notification.dto.NotificationRequest;
+import com.twg0.upgradecapstone.common.firebase.FCMService;
+import com.twg0.upgradecapstone.notification.dto.NotificationRequest;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -2,12 +2,12 @@ package com.twg0.upgradecapstone.message.factory;
 
 import java.util.List;
 
-import com.timcook.capstone.message.domain.MessageType;
-import com.timcook.capstone.message.dto.DetectMessageCreateRequest;
-import com.timcook.capstone.message.dto.MessageCreateRequsetInterface;
-import com.timcook.capstone.message.dto.ReplyMessageCreateRequest;
-import com.timcook.capstone.message.dto.SettingRequestMessage;
-import com.timcook.capstone.message.dto.UrgentMessageCreateRequest;
+import com.twg0.upgradecapstone.message.domain.MessageType;
+import com.twg0.upgradecapstone.message.dto.DetectMessageCreateRequest;
+import com.twg0.upgradecapstone.message.dto.MessageCreateRequsetInterface;
+import com.twg0.upgradecapstone.message.dto.ReplyMessageCreateRequest;
+import com.twg0.upgradecapstone.message.dto.SettingRequestMessage;
+import com.twg0.upgradecapstone.message.dto.UrgentMessageCreateRequest;
 
 import lombok.extern.slf4j.Slf4j;
 

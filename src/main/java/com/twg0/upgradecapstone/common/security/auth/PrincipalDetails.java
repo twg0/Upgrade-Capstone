@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.timcook.capstone.user.domain.User;
+import com.twg0.upgradecapstone.user.domain.User;
 
 import lombok.extern.slf4j.Slf4j;
 

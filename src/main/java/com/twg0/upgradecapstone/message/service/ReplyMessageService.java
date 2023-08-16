@@ -4,16 +4,16 @@ import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.timcook.capstone.common.mqtt.MqttBuffer;
-import com.timcook.capstone.device.domain.Confirm;
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.device.domain.Unconfirm;
-import com.timcook.capstone.device.repository.ConfirmRepository;
-import com.timcook.capstone.device.repository.DeviceRepository;
-import com.timcook.capstone.device.repository.UnconfirmRepository;
-import com.timcook.capstone.file.domain.File;
-import com.timcook.capstone.file.repository.FileRepository;
-import com.timcook.capstone.message.dto.ReplyMessageCreateRequest;
+import com.twg0.upgradecapstone.common.mqtt.MqttBuffer;
+import com.twg0.upgradecapstone.device.domain.Confirm;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.device.domain.Unconfirm;
+import com.twg0.upgradecapstone.device.repository.ConfirmRepository;
+import com.twg0.upgradecapstone.device.repository.DeviceRepository;
+import com.twg0.upgradecapstone.device.repository.UnconfirmRepository;
+import com.twg0.upgradecapstone.file.domain.File;
+import com.twg0.upgradecapstone.file.repository.FileRepository;
+import com.twg0.upgradecapstone.message.dto.ReplyMessageCreateRequest;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,7 +35,7 @@ public class ReplyMessageService {
 	public void changeStatus(ReplyMessageCreateRequest replyMessageCreateRequest) {
 		log.info("-----REPLY SERVICE-----");
 		log.info("DEVICE ID : {}",replyMessageCreateRequest.getDevice().getId());
-		
+
 		Device device = deviceRepository.getById(replyMessageCreateRequest.getDevice().getId());
 		File file = fileRepository.getById(Long.valueOf(replyMessageCreateRequest.getFileId()));
 		

@@ -1,8 +1,8 @@
 package com.twg0.upgradecapstone.user.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
-import com.timcook.capstone.user.domain.Role;
-import com.timcook.capstone.user.domain.User;
+import com.twg0.upgradecapstone.user.domain.Role;
+import com.twg0.upgradecapstone.user.domain.User;
 
 import lombok.Builder;
 import lombok.Getter;

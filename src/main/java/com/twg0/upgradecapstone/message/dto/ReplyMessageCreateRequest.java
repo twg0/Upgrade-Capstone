@@ -2,12 +2,11 @@ package com.twg0.upgradecapstone.message.dto;
 
 import java.util.List;
 
-import javax.validation.constraints.NotNull;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.message.domain.MessageFormat;
+import com.twg0.upgradecapstone.message.domain.ReplyMessage;
 
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.message.domain.MessageFormat;
-import com.timcook.capstone.message.domain.ReplyMessage;
-
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
