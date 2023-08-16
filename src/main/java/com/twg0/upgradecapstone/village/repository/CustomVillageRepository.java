@@ -2,12 +2,12 @@ package com.twg0.upgradecapstone.village.repository;
 
 import java.util.List;
 
-import com.timcook.capstone.device.dto.DeviceResponse;
-import com.timcook.capstone.file.dto.FileResponse;
-import com.timcook.capstone.message.dto.DetectMessageResponse;
-import com.timcook.capstone.message.dto.UrgentMessageReponse;
-import com.timcook.capstone.user.dto.UserResponse;
-import com.timcook.capstone.village.dto.VillageResponse;
+import com.twg0.upgradecapstone.device.dto.DeviceResponse;
+import com.twg0.upgradecapstone.file.dto.FileResponse;
+import com.twg0.upgradecapstone.message.dto.DetectMessageResponse;
+import com.twg0.upgradecapstone.message.dto.UrgentMessageReponse;
+import com.twg0.upgradecapstone.user.dto.UserResponse;
+import com.twg0.upgradecapstone.village.dto.VillageResponse;
 
 public interface CustomVillageRepository {
 		

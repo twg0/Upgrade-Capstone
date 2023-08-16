@@ -2,9 +2,9 @@ package com.twg0.upgradecapstone.device.repository;
 
 import java.util.List;
 
-import com.timcook.capstone.device.dto.ConfirmResponse;
-import com.timcook.capstone.device.dto.DisabledResponse;
-import com.timcook.capstone.device.dto.UnconfirmResponse;
+import com.twg0.upgradecapstone.device.dto.ConfirmResponse;
+import com.twg0.upgradecapstone.device.dto.DisabledResponse;
+import com.twg0.upgradecapstone.device.dto.UnconfirmResponse;
 
 public interface CustomDeviceRepository {
 	
