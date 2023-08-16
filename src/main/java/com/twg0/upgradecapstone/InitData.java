@@ -1,24 +1,24 @@
 package com.twg0.upgradecapstone;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.timcook.capstone.admin.domain.Admin;
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.message.domain.DetectMessage;
-import com.timcook.capstone.message.domain.UrgentMessage;
-import com.timcook.capstone.user.domain.Role;
-import com.timcook.capstone.user.domain.User;
-import com.timcook.capstone.village.domain.Address;
-import com.timcook.capstone.village.domain.Location;
-import com.timcook.capstone.village.domain.Village;
+import com.twg0.upgradecapstone.admin.domain.Admin;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.message.domain.DetectMessage;
+import com.twg0.upgradecapstone.message.domain.UrgentMessage;
+import com.twg0.upgradecapstone.user.domain.Role;
+import com.twg0.upgradecapstone.user.domain.User;
+import com.twg0.upgradecapstone.village.domain.Address;
+import com.twg0.upgradecapstone.village.domain.Location;
+import com.twg0.upgradecapstone.village.domain.Village;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 
 @Component

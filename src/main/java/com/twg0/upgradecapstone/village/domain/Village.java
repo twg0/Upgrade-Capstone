@@ -4,24 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.BatchSize;
 
-import com.timcook.capstone.admin.domain.Admin;
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.file.domain.File;
-import com.timcook.capstone.user.domain.User;
+import com.twg0.upgradecapstone.admin.domain.Admin;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.file.domain.File;
+import com.twg0.upgradecapstone.user.domain.User;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +33,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Village {
 
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	@Column(name = "VILLAGE_ID")
 	@NotNull
 	private Long id;

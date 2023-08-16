@@ -5,24 +5,23 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
+import com.twg0.upgradecapstone.message.domain.DetectMessage;
+import com.twg0.upgradecapstone.message.domain.UrgentMessage;
+import com.twg0.upgradecapstone.user.domain.User;
+import com.twg0.upgradecapstone.village.domain.Village;
 
-import com.timcook.capstone.message.domain.DetectMessage;
-import com.timcook.capstone.message.domain.UrgentMessage;
-import com.timcook.capstone.user.domain.User;
-import com.timcook.capstone.village.domain.Village;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,7 +33,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Device {
 	
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	@Column(name = "DEVICE_ID")
 	@NotNull
 	private Long id;

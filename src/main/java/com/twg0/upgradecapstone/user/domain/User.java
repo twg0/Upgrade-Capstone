@@ -5,25 +5,24 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import com.twg0.upgradecapstone.admin.domain.Admin;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.user.dto.UserCreateRequest;
+import com.twg0.upgradecapstone.village.domain.Village;
 
-import com.timcook.capstone.admin.domain.Admin;
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.user.dto.UserCreateRequest;
-import com.timcook.capstone.village.domain.Village;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -38,7 +37,8 @@ import lombok.extern.slf4j.Slf4j;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User{
 	
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	@Column(name = "USER_ID")
 	private Long id;
 	

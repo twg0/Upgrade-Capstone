@@ -5,15 +5,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 
-import com.timcook.capstone.device.domain.Device;
-import com.timcook.capstone.file.domain.File;
-import com.timcook.capstone.user.domain.Role;
-import com.timcook.capstone.user.domain.User;
-import com.timcook.capstone.village.domain.Village;
+import com.twg0.upgradecapstone.device.domain.Device;
+import com.twg0.upgradecapstone.file.domain.File;
+import com.twg0.upgradecapstone.user.domain.Role;
+import com.twg0.upgradecapstone.user.domain.User;
+import com.twg0.upgradecapstone.village.domain.Village;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,12 +21,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Admin extends User{
+public class Admin extends User {
 	
-	@OneToMany(mappedBy = "admin", orphanRemoval = true)	
+	@OneToMany(mappedBy = "admin", orphanRemoval = true)
 	private List<File> files = new ArrayList<>();
 	
-	public Admin(String username, String password, String email, Role role, 
+	public Admin(String username, String password, String email, Role role,
 			Device device, User ward, Village village, String phoneNumber, String address) {
 		super(username, password, email, role, device, ward, village, phoneNumber, address);
 	}

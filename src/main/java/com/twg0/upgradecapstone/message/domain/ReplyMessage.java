@@ -1,6 +1,7 @@
 package com.twg0.upgradecapstone.message.domain;
 
-import com.timcook.capstone.device.domain.Device;
+
+import com.twg0.upgradecapstone.device.domain.Device;
 
 import lombok.Builder;
 import lombok.Getter;
