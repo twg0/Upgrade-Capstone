@@ -26,31 +26,30 @@ public class UrgentMessageService {
 	private final UrgentMessageRepository urgentMessageRepository;
 	private final UrgentMessageRepositoryImpl urgentMessageRepositoryImpl;
 	private final NotificationService notificationService;
-	
+
 	@Transactional
 	public UrgentMessage create(UrgentMessageCreateRequest createRequest) {
 		return urgentMessageRepository.save(createRequest.toEntity());
 	}
 
 	public void sendToMessage(UrgentMessage urgentMessage) {
-		log.info("URGENT_MESSAGE_SERVICFE = {}",urgentMessage.getDevice().getId());
-		log.info("URGENT_MESSAGE_SERVICFE = {}",urgentMessage.getDevice().getUser().getUsername());
+		log.info("URGENT_MESSAGE_SERVICFE = {}", urgentMessage.getDevice().getId());
+		log.info("URGENT_MESSAGE_SERVICFE = {}", urgentMessage.getDevice().getUser().getUsername());
 		User deviceUser = urgentMessage.getDevice().getUser();
 		List<User> guardians = deviceUser.getGuardians();
-		
-		for(User guardian : guardians) {
-			NotificationRequest notificationRequest =  NotificationRequest.builder()
-								.token(notificationService.getToken(guardian.getId()))
-								.title("긴급 호출")
-								.body("긴급 상황입니다!")
-								.build();
+
+		for (User guardian : guardians) {
+			NotificationRequest notificationRequest = NotificationRequest.builder()
+				.token(notificationService.getToken(guardian.getId()))
+				.title("긴급 호출")
+				.body("긴급 상황입니다!")
+				.build();
 			notificationService.sendNotification(notificationRequest);
 		}
 	}
-	
-	
-	public List<UrgentMessageReponse> getMessagesByUserId (Long userId){
+
+	public List<UrgentMessageReponse> getMessagesByUserId(Long userId) {
 		return urgentMessageRepositoryImpl.findAllByUserId(userId);
 	}
-	
+
 }

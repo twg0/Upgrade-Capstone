@@ -16,7 +16,7 @@ public class UnconfirmResponse {
 	private Long fileId;
 	private String fileTitle;
 	private LocalDateTime createdTime;
-	
+
 	@QueryProjection
 	public UnconfirmResponse(Long fileId, String fileTitle, LocalDateTime createdTime) {
 		this.fileId = fileId;

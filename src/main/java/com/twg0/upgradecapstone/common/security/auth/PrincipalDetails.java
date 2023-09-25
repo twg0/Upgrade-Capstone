@@ -12,10 +12,10 @@ import com.twg0.upgradecapstone.user.domain.User;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class PrincipalDetails implements UserDetails{
+public class PrincipalDetails implements UserDetails {
 
 	private User user;
-	
+
 	public PrincipalDetails(User user) {
 		this.user = user;
 	}

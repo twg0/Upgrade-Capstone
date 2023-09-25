@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
 import org.hibernate.annotations.BatchSize;
 
 import com.twg0.upgradecapstone.admin.domain.Admin;
@@ -38,29 +37,29 @@ public class Village {
 	@Column(name = "VILLAGE_ID")
 	@NotNull
 	private Long id;
-	
-	@OneToOne(mappedBy = "village",fetch = FetchType.LAZY)
+
+	@OneToOne(mappedBy = "village", fetch = FetchType.LAZY)
 	private Admin admin;
-	
+
 	@Column(length = 20)
 	private String nickname;
-	
+
 	@BatchSize(size = 100)
 	@OneToMany(mappedBy = "village")
 	private List<Device> devices = new ArrayList<>();
-	
+
 	@OneToMany(mappedBy = "village", cascade = CascadeType.ALL)
 	private List<File> files = new ArrayList<>();
-	
+
 	@OneToMany
 	private List<User> users = new ArrayList<>();
-	
+
 	@Embedded
 	private Address address;
-	
+
 	@Embedded
 	private Location location;
-	
+
 	@Builder
 	public Village(Admin admin, String nickname, List<Device> devices, Address address, Location location) {
 		this.admin = admin;
@@ -69,27 +68,27 @@ public class Village {
 		this.address = address;
 		this.location = location;
 	}
-	
+
 	public void addDevice(Device device) {
 		this.devices.add(device);
 	}
-	
+
 	public void removeDevice(Device device) {
 		this.devices.removeIf(d -> d.equals(device));
 	}
-	
+
 	public void updateAdmin(Admin admin) {
-		if(!Objects.isNull(this.admin)) {
+		if (!Objects.isNull(this.admin)) {
 			this.admin.removeVillage();
 		}
 		this.admin = admin;
 	}
-	
+
 	public void addUser(User user) {
 		log.info("addUser() : {}", user.getId());
 		this.users.add(user);
 	}
-	
+
 	public void removeUser(User user) {
 		this.users.removeIf(u -> u.equals(user));
 	}

@@ -8,19 +8,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
-public class UrgentMessageCreateRequest implements MessageCreateRequsetInterface{
-		
+public class UrgentMessageCreateRequest implements MessageCreateRequsetInterface {
+
 	@NotNull
 	private Device device;
 
 	public UrgentMessage toEntity() {
 		return UrgentMessage.builder()
-						.device(device)
-						.build();
+			.device(device)
+			.build();
 	}
-	
+
 }

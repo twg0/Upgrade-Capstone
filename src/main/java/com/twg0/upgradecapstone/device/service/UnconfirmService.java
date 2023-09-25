@@ -23,20 +23,20 @@ public class UnconfirmService {
 
 	private final UnconfirmRepository unconfirmRepository;
 	private final DeviceRepository deviceRepository;
-	
+
 	@Transactional(propagation = Propagation.SUPPORTS)
 	public void save(File file, List<Long> devicesId) {
 		log.info("UNCONFIRM INFO SAVE");
 		List<Device> devices = deviceRepository.findAllById(devicesId);
-		
+
 		List<Unconfirm> list = new ArrayList<>();
-		
-		for(Device device : devices){
-			log.info("deviceId={}",device.getId());
+
+		for (Device device : devices) {
+			log.info("deviceId={}", device.getId());
 			list.add(Unconfirm.builder().device(device).file(file).build());
 		}
-		
+
 		unconfirmRepository.saveAll(list);
 	}
-	
+
 }

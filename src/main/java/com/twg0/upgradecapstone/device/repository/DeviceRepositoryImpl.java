@@ -21,36 +21,36 @@ import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
-public class DeviceRepositoryImpl implements CustomDeviceRepository{
-	
+public class DeviceRepositoryImpl implements CustomDeviceRepository {
+
 	private final JPAQueryFactory jpaQueryFactory;
 	private final FileRepository fileRepository;
-	
+
 	@Override
 	public List<DisabledResponse> getDisabled(Long deviceId) {
 		return jpaQueryFactory.select(new QDisabledResponse(disabled.createdTime))
-						.from(disabled)
-						.where(disabled.device.id.eq(deviceId))
-						.fetch();
+			.from(disabled)
+			.where(disabled.device.id.eq(deviceId))
+			.fetch();
 	}
 
 	@Override
 	public UnconfirmResponse getUnconfirm(Long deviceId) {
 		return jpaQueryFactory.select(new QUnconfirmResponse(
-					unconfirm.file.id, unconfirm.file.title, unconfirm.createdTime))
-				.from(unconfirm)
-				.where(unconfirm.device.id.eq(deviceId))
-				.orderBy(unconfirm.createdTime.asc())
-				.fetchFirst();
+				unconfirm.file.id, unconfirm.file.title, unconfirm.createdTime))
+			.from(unconfirm)
+			.where(unconfirm.device.id.eq(deviceId))
+			.orderBy(unconfirm.createdTime.asc())
+			.fetchFirst();
 	}
 
 	@Override
 	public List<ConfirmResponse> getconfirm(Long deviceId) {
 		return jpaQueryFactory.select(new QConfirmResponse
-					(confirm.file.id, confirm.file.title, confirm.createdTime))
-				.from(confirm)
-				.where(confirm.device.id.eq(deviceId))
-				.fetch();
+				(confirm.file.id, confirm.file.title, confirm.createdTime))
+			.from(confirm)
+			.where(confirm.device.id.eq(deviceId))
+			.fetch();
 	}
 
 }

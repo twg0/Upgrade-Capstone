@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class DetectMessageCreateRequest implements MessageCreateRequsetInterface{
+public class DetectMessageCreateRequest implements MessageCreateRequsetInterface {
 
 	@NotNull
 	private Device device;
@@ -29,10 +29,10 @@ public class DetectMessageCreateRequest implements MessageCreateRequsetInterface
 	private Boolean detectionGasLeak;
 	@NotNull
 	private Boolean detectionAbnormalness;
-	
+
 	@Builder
 	public DetectMessageCreateRequest(Device device, Double temperature, Double humidity,
-			Boolean detectionVibration, Boolean detectionGasLeak, Boolean detectionAbnormalness) {
+		Boolean detectionVibration, Boolean detectionGasLeak, Boolean detectionAbnormalness) {
 		this.device = device;
 		this.temperature = temperature;
 		this.humidity = humidity;
@@ -40,8 +40,8 @@ public class DetectMessageCreateRequest implements MessageCreateRequsetInterface
 		this.detectionGasLeak = detectionGasLeak;
 		this.detectionAbnormalness = detectionAbnormalness;
 	}
-	
-	public DetectMessageCreateRequest (List<String> payload) {
+
+	public DetectMessageCreateRequest(List<String> payload) {
 		this.temperature = Double.valueOf(payload.get(MessageFormat.TEMPERATURE.getIndex()));
 		this.humidity = Double.valueOf(payload.get(MessageFormat.HUMIDITY.getIndex()));
 		this.detectionVibration = Boolean.valueOf(payload.get(MessageFormat.VIBRATION.getIndex()));
@@ -51,12 +51,12 @@ public class DetectMessageCreateRequest implements MessageCreateRequsetInterface
 
 	public DetectMessage toEntity() {
 		return DetectMessage.builder()
-				.device(device)
-				.temperature(temperature)
-				.humidity(humidity)
-				.detectionVibration(detectionVibration)
-				.detectionGasLeak(detectionGasLeak)
-				.detectionAbnormalness(detectionAbnormalness)
-				.build();
+			.device(device)
+			.temperature(temperature)
+			.humidity(humidity)
+			.detectionVibration(detectionVibration)
+			.detectionGasLeak(detectionGasLeak)
+			.detectionAbnormalness(detectionAbnormalness)
+			.build();
 	}
 }

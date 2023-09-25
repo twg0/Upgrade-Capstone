@@ -33,16 +33,16 @@ public class Unconfirm {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "DEVICE_ID")
 	private Device device;
-	
+
 	@OneToOne
 	@JoinColumn(name = "FILE_ID")
 	private File file;
-	
+
 	@CreatedDate
 	private LocalDateTime createdTime;
-	
+
 }

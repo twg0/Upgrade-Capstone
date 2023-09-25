@@ -14,20 +14,20 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Service
 @Slf4j
-public class PrincipalDetailsService implements UserDetailsService{
+public class PrincipalDetailsService implements UserDetailsService {
 
 	private final UserRepository userRepository;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		
-		log.info("email :: {}",email);
-		
+
+		log.info("email :: {}", email);
+
 		User user = userRepository.findByEmail(email)
-								.orElseThrow(() -> new IllegalArgumentException("없음"));
-			
-		log.info("LOAD USER BY USERNAME = USER : {}, {}",user.getEmail(), user.getPassword());
-		
+			.orElseThrow(() -> new IllegalArgumentException("없음"));
+
+		log.info("LOAD USER BY USERNAME = USER : {}, {}", user.getEmail(), user.getPassword());
+
 		return new PrincipalDetails(user);
 	}
 

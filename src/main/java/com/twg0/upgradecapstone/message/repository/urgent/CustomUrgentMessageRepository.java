@@ -7,5 +7,5 @@ import com.twg0.upgradecapstone.message.dto.UrgentMessageReponse;
 public interface CustomUrgentMessageRepository {
 
 	List<UrgentMessageReponse> findAllByUserId(Long userId);
-	
+
 }

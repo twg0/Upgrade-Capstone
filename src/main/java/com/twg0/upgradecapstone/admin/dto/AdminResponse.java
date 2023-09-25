@@ -14,24 +14,24 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AdminResponse {
-	
+
 	@NotNull
 	private Long id;
-	
+
 	private String username;
 	private String email;
 	private String phoneNumber;
 	private String address;
 	private Role role;
-	
+
 	public static AdminResponse from(Admin admin) {
 		return AdminResponse.builder()
-				.id(admin.getId())
-				.username(admin.getUsername())
-				.email(admin.getEmail())
-				.phoneNumber(admin.getPhoneNumber())
-				.address(admin.getAddress())
-				.role(admin.getRole())
-				.build();
+			.id(admin.getId())
+			.username(admin.getUsername())
+			.email(admin.getEmail())
+			.phoneNumber(admin.getPhoneNumber())
+			.address(admin.getAddress())
+			.role(admin.getRole())
+			.build();
 	}
 }

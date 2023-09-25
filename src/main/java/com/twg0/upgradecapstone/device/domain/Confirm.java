@@ -30,15 +30,15 @@ public class Confirm {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "DEVICE_ID")
 	private Device device;
-	
+
 	@OneToOne
 	@JoinColumn(name = "FILE_ID")
 	private File file;
-	
+
 	@CreatedDate
 	private LocalDateTime createdTime;
 }

@@ -18,33 +18,32 @@ import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
-public class UserRepositoryImpl implements CustomUserRepository{
+public class UserRepositoryImpl implements CustomUserRepository {
 
 	private final JPAQueryFactory queryFactory;
-	
+
 	@Override
 	public List<UserResponse> searchBy(Long villageId, String username) {
 		return queryFactory.select(new QUserResponse(
-								user.id, user.username, user.email, user.role, user.phoneNumber, user.address))
-							.from(user)
-							.where(containsUsername(username).and(villageIdEq(villageId)))
-							.fetch();
+				user.id, user.username, user.email, user.role, user.phoneNumber, user.address))
+			.from(user)
+			.where(containsUsername(username).and(villageIdEq(villageId)))
+			.fetch();
 	}
 
-	
 	private BooleanExpression containsUsername(String username) {
-		if(StringUtils.isBlank(username)) {
+		if (StringUtils.isBlank(username)) {
 			return null;
 		}
-		
+
 		return user.username.contains(username);
 	}
-	
+
 	private BooleanExpression villageIdEq(Long villageId) {
-		if(Objects.isNull(villageId)) {
+		if (Objects.isNull(villageId)) {
 			return null;
 		}
-		
+
 		return village.id.eq(villageId);
 	}
 }

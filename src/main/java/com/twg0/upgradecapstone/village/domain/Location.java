@@ -18,5 +18,5 @@ public class Location {
 	private double longitude;
 	@Column(nullable = false)
 	private double latitude;
-	
+
 }

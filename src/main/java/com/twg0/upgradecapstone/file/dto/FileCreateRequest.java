@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FileCreateRequest {
-		
+
 	@NotNull
 	private Long villageId;
 	@NotNull

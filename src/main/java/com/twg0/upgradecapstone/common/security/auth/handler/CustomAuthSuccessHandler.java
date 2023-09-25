@@ -14,14 +14,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Component
-public class CustomAuthSuccessHandler implements AuthenticationSuccessHandler{
+public class CustomAuthSuccessHandler implements AuthenticationSuccessHandler {
 
 	private static final String REDIRECT_URL = "http://localhost:8080/api/login/success";
-	
+
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-			Authentication authentication) throws IOException, ServletException {
-		
+		Authentication authentication) throws IOException, ServletException {
+
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(1800);
 		addSameSiteCookieAttribute(response);
@@ -31,17 +31,17 @@ public class CustomAuthSuccessHandler implements AuthenticationSuccessHandler{
 	private void addSameSiteCookieAttribute(HttpServletResponse response) {
 		Collection<String> headers = response.getHeaders(HttpHeaders.SET_COOKIE);
 		boolean firstHeader = true;
-		
+
 		for (String header : headers) {
-	        if (firstHeader) {
-	            response.setHeader(HttpHeaders.SET_COOKIE,
-	                    String.format("%s; %s", header, "SameSite=Strict"));
-	            firstHeader = false;
-	            continue;
-	        }
-	        response.addHeader(HttpHeaders.SET_COOKIE,
-	                String.format("%s; %s", header, "SameSite=Strict"));
-	    }
+			if (firstHeader) {
+				response.setHeader(HttpHeaders.SET_COOKIE,
+					String.format("%s; %s", header, "SameSite=Strict"));
+				firstHeader = false;
+				continue;
+			}
+			response.addHeader(HttpHeaders.SET_COOKIE,
+				String.format("%s; %s", header, "SameSite=Strict"));
+		}
 	}
-	
+
 }

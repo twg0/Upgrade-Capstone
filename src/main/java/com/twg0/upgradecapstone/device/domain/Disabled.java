@@ -31,13 +31,12 @@ public class Disabled {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "DEVICE_ID")
 	private Device device;
-	
-	
+
 	@CreatedDate
 	private LocalDateTime createdTime;
-	
+
 }

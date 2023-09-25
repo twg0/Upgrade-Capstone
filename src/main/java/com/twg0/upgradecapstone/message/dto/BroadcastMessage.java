@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class BroadcastMessage {
-	
+
 	private MessageType type;
 	private String title;
 	private String contents;
 	private String fileId;
-	
+
 	@Builder
 	public BroadcastMessage(MessageType type, String title, String contents, String fileId) {
 		this.type = type;
@@ -22,8 +22,8 @@ public class BroadcastMessage {
 		this.contents = contents;
 		this.fileId = fileId;
 	}
-	
+
 	public String toPayload() {
-		return  type.name() + "/" + title + "/" + contents + "/" + fileId;
+		return type.name() + "/" + title + "/" + contents + "/" + fileId;
 	}
 }

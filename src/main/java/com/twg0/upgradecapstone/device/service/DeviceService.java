@@ -36,101 +36,103 @@ public class DeviceService {
 	private final UserRepository userRepository;
 	private final VillageRepository villageRepository;
 	private final DeviceRepositoryImpl deviceRepositoryImpl;
-	
-	public Device findDeviceById (Long id) {
+
+	public Device findDeviceById(Long id) {
 		return deviceRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 단말기가 존재하지 않습니다."));
 	}
-	
-	public List<DeviceResponse> findAll(){
+
+	public List<DeviceResponse> findAll() {
 		return deviceRepository.findAll().stream()
-						.map(device -> DeviceResponse.from(device))
-						.collect(Collectors.toList());
+			.map(device -> DeviceResponse.from(device))
+			.collect(Collectors.toList());
 	}
-	
+
 	public DeviceResponse findById(Long id) {
-		Device device = deviceRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 단말기가 존재하지 않습니다."));
+		Device device = deviceRepository.findById(id)
+			.orElseThrow(() -> new IllegalArgumentException("해당 단말기가 존재하지 않습니다."));
 		return DeviceResponse.from(device);
 	}
-	
+
 	@Transactional
 	public Long create() {
 		Device device = Device.builder().build();
 		deviceRepository.save(device);
 		return device.getId();
 	}
-	
+
 	@Transactional
 	public void delete(Long id) {
 		Device device = deviceRepository.findById(id)
-								.orElseThrow(() -> new IllegalArgumentException("해당 단말기가 존재하지 않습니다."));
-		
-		if(Optional.ofNullable(device.getUser()).isPresent()) {
+			.orElseThrow(() -> new IllegalArgumentException("해당 단말기가 존재하지 않습니다."));
+
+		if (Optional.ofNullable(device.getUser()).isPresent()) {
 			device.getUser().removeDevice();
 		}
-		
-		if(Optional.ofNullable(device.getVillage()).isPresent()) {
+
+		if (Optional.ofNullable(device.getVillage()).isPresent()) {
 			device.getVillage().removeDevice(device);
 		}
-		
+
 		deviceRepository.delete(device);
 	}
-	
+
 	@Transactional
-	public DeviceResponse registerUser(Long id , DeviceRegisterUserRequest deviceRegisterUserRequest) {
+	public DeviceResponse registerUser(Long id, DeviceRegisterUserRequest deviceRegisterUserRequest) {
 		Device device = deviceRepository.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("해당 단말기가 존재하지 않습니다."));
+			.orElseThrow(() -> new IllegalArgumentException("해당 단말기가 존재하지 않습니다."));
 		User user = userRepository.findById(deviceRegisterUserRequest.getUserId())
-				.orElseThrow(() -> new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
+			.orElseThrow(() -> new IllegalArgumentException("해당 회원이 존재하지 않습니다."));
 
 		device.registerUser(user);
 		user.registerDevice(device);
-		
+
 		return DeviceResponse.from(device);
 	}
-	
+
 	@Transactional
-	public DeviceResponse registerVillage(Long id , DeviceRegisterVillageRequest deviceRegisterVillageRequest) {
+	public DeviceResponse registerVillage(Long id, DeviceRegisterVillageRequest deviceRegisterVillageRequest) {
 		Device device = deviceRepository.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("해당 단말기가 존재하지 않습니다."));
+			.orElseThrow(() -> new IllegalArgumentException("해당 단말기가 존재하지 않습니다."));
 		Village village = villageRepository.findById(deviceRegisterVillageRequest.getVillageId())
-				.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
+			.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
 
 		device.registerVillage(village);
-		
+
 		return DeviceResponse.from(device);
 	}
-	
+
 	@Transactional
 	public SettingResponseMessage deviceConnectUser(SettingRequestMessage settingRequestMessage) {
-		log.info("PHONE NUMBER = {}",settingRequestMessage.getPhoneNumber());
-		
+		log.info("PHONE NUMBER = {}", settingRequestMessage.getPhoneNumber());
+
 		Optional<User> user = userRepository.findByPhoneNumber(settingRequestMessage.getPhoneNumber());
 		Optional<Device> device = deviceRepository.findById(settingRequestMessage.getDeviceId());
-		
-		if(user.isEmpty() || user.get().getDevice() != null || device.get().getUser() != null || user.get().getVillage() == null) {
+
+		if (user.isEmpty() || user.get().getDevice() != null || device.get().getUser() != null
+			|| user.get().getVillage() == null) {
 			return null;
 		}
-		
+
 		/*
 		 * uesr <-> device 연결 성공
 		 */
 		user.get().registerDevice(device.get());
-		return SettingResponseMessage.builder() 
-								.deviceId(device.get().getId())
-								.username(user.get().getUsername())
-								.villageId(user.get().getVillage().getId())
-								.build(); 
+		return SettingResponseMessage.builder()
+			.deviceId(device.get().getId())
+			.username(user.get().getUsername())
+			.villageId(user.get().getVillage().getId())
+			.build();
 	}
-	
-	public List<DisabledResponse> getDisabled(Long deviceId){
+
+	public List<DisabledResponse> getDisabled(Long deviceId) {
 		return deviceRepositoryImpl.getDisabled(deviceId);
 	}
 
-	public UnconfirmResponse getUncofirm(Long deviceId){
+	public UnconfirmResponse getUncofirm(Long deviceId) {
 		return deviceRepositoryImpl.getUnconfirm(deviceId);
 	}
-	
-	public List<ConfirmResponse> getConfirm(Long deviceId){
+
+	public List<ConfirmResponse> getConfirm(Long deviceId) {
 		return deviceRepositoryImpl.getconfirm(deviceId);
 	}
 }

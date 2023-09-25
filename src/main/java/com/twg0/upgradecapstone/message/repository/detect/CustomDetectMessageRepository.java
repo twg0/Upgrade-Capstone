@@ -7,5 +7,5 @@ import com.twg0.upgradecapstone.message.domain.DetectMessage;
 public interface CustomDetectMessageRepository {
 
 	List<DetectMessage> findAllMessagesByUserId(Long userId);
-	
+
 }

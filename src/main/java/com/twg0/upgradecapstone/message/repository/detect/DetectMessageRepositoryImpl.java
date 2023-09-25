@@ -17,26 +17,24 @@ import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
-public class DetectMessageRepositoryImpl implements CustomDetectMessageRepository{
+public class DetectMessageRepositoryImpl implements CustomDetectMessageRepository {
 
 	private final JPAQueryFactory jpaQueryFactory;
-	
+
 	@Override
 	public List<DetectMessage> findAllMessagesByUserId(Long userId) {
-		
+
 		LocalDateTime to = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
 		LocalDateTime from = LocalDateTime.now(ZoneId.of("Asia/Seoul")).minusMinutes(50);
-		
-		return  jpaQueryFactory
-					.selectFrom(detectMessage)
-					.join(detectMessage.device, device).fetchJoin()
-					.join(device.user, user).fetchJoin()
-					.where(detectMessage.device.user.id.eq(userId)
-							.and(
-								detectMessage.createdTime.between(from, to)))
-					.fetch();
+
+		return jpaQueryFactory
+			.selectFrom(detectMessage)
+			.join(detectMessage.device, device).fetchJoin()
+			.join(device.user, user).fetchJoin()
+			.where(detectMessage.device.user.id.eq(userId)
+				.and(
+					detectMessage.createdTime.between(from, to)))
+			.fetch();
 	}
 
-	
-	
 }

@@ -13,7 +13,7 @@ public class NotificationRequest {
 	private String token;
 	private String title;
 	private String body;
-	
+
 	@Builder
 	public NotificationRequest(String token, String title, String body) {
 		this.token = token;

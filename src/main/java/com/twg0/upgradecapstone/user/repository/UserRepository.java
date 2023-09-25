@@ -8,11 +8,11 @@ import org.springframework.data.repository.query.Param;
 
 import com.twg0.upgradecapstone.user.domain.User;
 
-public interface UserRepository extends JpaRepository<User, Long>, CustomUserRepository{
-	
+public interface UserRepository extends JpaRepository<User, Long>, CustomUserRepository {
+
 	Optional<User> findByEmail(String email);
-	
+
 	@Query("select u from User u where u.phoneNumber = :number")
 	Optional<User> findByPhoneNumber(@Param("number") String phoneNumber);
-	
+
 }

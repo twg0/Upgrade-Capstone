@@ -35,112 +35,112 @@ public class VillageService {
 	private final VillageRepositoryImpl villageRepositoryImpl;
 	private final AdminRepository adminRepository;
 
-	public List<VillageResponse> findAll(){
+	public List<VillageResponse> findAll() {
 		return villageRepository.findAll().stream()
-						.map(village -> VillageResponse.from(village))
-						.collect(Collectors.toList());
+			.map(village -> VillageResponse.from(village))
+			.collect(Collectors.toList());
 	}
-	
+
 	@Transactional
 	public VillageResponse create(VillageCreateRequest villageCreateRequest) {
 		Village village = villageCreateRequest.toEntity();
 		villageRepository.save(village);
 		return VillageResponse.from(village);
 	}
-	
+
 	public VillageResponse findById(Long id) {
 		Village village = villageRepository.findById(id)
-							.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
-		return VillageResponse.from(village); 
+			.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
+		return VillageResponse.from(village);
 	}
 
 	@Transactional
 	public void delete(Long id) {
 		Village village = villageRepository.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
-		
-		if(Optional.ofNullable(village.getUsers()).isPresent()) {
-			village.getUsers().forEach(u ->{
+			.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
+
+		if (Optional.ofNullable(village.getUsers()).isPresent()) {
+			village.getUsers().forEach(u -> {
 				u.removeVillage();
-				});
+			});
 		}
 
-		if(Optional.ofNullable(village.getAdmin()).isPresent()) {
+		if (Optional.ofNullable(village.getAdmin()).isPresent()) {
 			village.getAdmin().removeVillage();
 		}
-		
-		if(Optional.ofNullable(village.getDevices()).isPresent()) {
-			village.getDevices().forEach(d ->{
+
+		if (Optional.ofNullable(village.getDevices()).isPresent()) {
+			village.getDevices().forEach(d -> {
 				d.removeVillage();
-				});
+			});
 		}
-		
+
 		villageRepository.delete(village);
 	}
-	
-	public List<DeviceResponse> findAllDevices(Long id){
+
+	public List<DeviceResponse> findAllDevices(Long id) {
 		return villageRepositoryImpl.findAllDevices(id);
 	}
-	
-	public List<UrgentMessageReponse> findAllUrgentMessages(Long id){
+
+	public List<UrgentMessageReponse> findAllUrgentMessages(Long id) {
 		return villageRepositoryImpl.findAllUrgentMessages(id);
 	}
-	
-	public List<DetectMessageResponse> findAllDetectMessages(Long id){
+
+	public List<DetectMessageResponse> findAllDetectMessages(Long id) {
 		return villageRepositoryImpl.findAllDetectMessages(id);
 	}
-	
+
 	@Transactional
 	public void setAdmin(Long villageId, Long adminId) {
 		Village village = villageRepository.findById(villageId)
-				.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
-		
+			.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
+
 		Admin admin = adminRepository.findById(adminId)
-				.orElseThrow(() -> new IllegalArgumentException("해당 이장이 존재하지 않습니다."));
-		
+			.orElseThrow(() -> new IllegalArgumentException("해당 이장이 존재하지 않습니다."));
+
 		admin.registerVillage(village);
 	}
-	
+
 	@Transactional
 	public void changeAdmin(Long villageId, Long adminId) {
 		Village village = villageRepository.findById(villageId)
-				.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
-		
+			.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
+
 		Admin admin = adminRepository.findById(adminId)
-				.orElseThrow(() -> new IllegalArgumentException("해당 이장이 존재하지 않습니다."));
-		
+			.orElseThrow(() -> new IllegalArgumentException("해당 이장이 존재하지 않습니다."));
+
 		admin.registerVillage(village);
 	}
-	
+
 	@Transactional
 	public void deleteAdmin(Long id) {
 		Village village = villageRepository.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
+			.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
 
 		village.updateAdmin(null);
 	}
-	
-	public List<UserResponse> getExceptGuardians(Long id){
+
+	public List<UserResponse> getExceptGuardians(Long id) {
 		Village findVillage = villageRepository.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
-		
+			.orElseThrow(() -> new IllegalArgumentException("해당 마을이 존재하지 않습니다."));
+
 		List<User> users = findVillage.getUsers();
-		
+
 		return users.stream()
-				.filter(u -> Objects.isNull(u.getWard()))
-				.map(u -> UserResponse.from(u))
-				.collect(Collectors.toList());
+			.filter(u -> Objects.isNull(u.getWard()))
+			.map(u -> UserResponse.from(u))
+			.collect(Collectors.toList());
 	}
-	
-	public List<FileResponse> getFiles(Long id){
+
+	public List<FileResponse> getFiles(Long id) {
 		return villageRepositoryImpl.findAllFiles(id);
 	}
-	
-	public List<UserResponse> getUsers(Long id){
+
+	public List<UserResponse> getUsers(Long id) {
 		return villageRepositoryImpl.findAllUsers(id);
 	}
-	
-	public List<VillageResponse> search(String words){
+
+	public List<VillageResponse> search(String words) {
 		return villageRepositoryImpl.searchBy(words);
 	}
 }

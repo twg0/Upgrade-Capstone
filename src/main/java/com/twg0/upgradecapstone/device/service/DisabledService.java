@@ -21,20 +21,20 @@ public class DisabledService {
 
 	private final DisabledRepository disabledRepository;
 	private final DeviceRepository deviceRepository;
-	
+
 	@Transactional
 	public void save(List<Long> devicesId) {
 		log.info("DISABLED INFO SAVE");
 		List<Device> devices = deviceRepository.findAllById(devicesId);
-		
+
 		List<Disabled> list = new ArrayList<>();
-		
-		for(Device device : devices){
-			log.info("deviceId={}",device.getId());
+
+		for (Device device : devices) {
+			log.info("deviceId={}", device.getId());
 			list.add(Disabled.builder().device(device).build());
 		}
-		
+
 		disabledRepository.saveAll(list);
 	}
-	
+
 }

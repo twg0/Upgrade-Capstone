@@ -19,7 +19,7 @@ public class NotificationService {
 
 	private final Map<Long, String> tokenMap = new HashMap<>();
 	private final FCMService fcmService;
-	
+
 	public void register(Long userId, String token) {
 		log.info("==원래 존재하던 토큰 정보==");
 		log.info("==userId = {}, token = {}", userId, tokenMap.get(userId));
@@ -27,15 +27,15 @@ public class NotificationService {
 		log.info("==바뀐 토큰 정보==");
 		log.info("==userId = {}, token = {}", userId, tokenMap.get(userId));
 	}
-	
+
 	public String getToken(Long userId) {
 		return tokenMap.get(userId);
 	}
-	
+
 	public void deleteToken(Long userId) {
 		tokenMap.remove(userId);
 	}
-	
+
 	public void sendNotification(NotificationRequest notificationRequest) {
 		try {
 			fcmService.sendMessageTo(notificationRequest);

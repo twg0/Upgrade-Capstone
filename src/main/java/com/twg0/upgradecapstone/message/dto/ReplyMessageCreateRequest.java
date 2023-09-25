@@ -15,8 +15,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ReplyMessageCreateRequest implements MessageCreateRequsetInterface{
-	
+public class ReplyMessageCreateRequest implements MessageCreateRequsetInterface {
+
 	@NotNull
 	private Device device;
 	@NotNull
@@ -25,7 +25,7 @@ public class ReplyMessageCreateRequest implements MessageCreateRequsetInterface{
 	private int kindOfReply;
 	@NotNull
 	private String fileId;
-	
+
 	@Builder
 	public ReplyMessageCreateRequest(Device device, String title, int kindOfReply, String fileId) {
 		this.device = device;
@@ -33,7 +33,7 @@ public class ReplyMessageCreateRequest implements MessageCreateRequsetInterface{
 		this.kindOfReply = kindOfReply;
 		this.fileId = fileId;
 	}
-	
+
 	public ReplyMessageCreateRequest(List<String> payload) {
 		this.title = payload.get(MessageFormat.TITLE.getIndex());
 		this.kindOfReply = Integer.parseInt(payload.get(MessageFormat.REPLY_KIND.getIndex()));
@@ -42,10 +42,10 @@ public class ReplyMessageCreateRequest implements MessageCreateRequsetInterface{
 
 	public ReplyMessage toEntity() {
 		return ReplyMessage.builder()
-							.device(device)
-							.title(title)
-							.reply_sort(kindOfReply)
-							.fileId(fileId)
-							.build();
+			.device(device)
+			.title(title)
+			.reply_sort(kindOfReply)
+			.fileId(fileId)
+			.build();
 	}
 }

@@ -1,19 +1,18 @@
 package com.twg0.upgradecapstone.message.domain;
 
-
 import com.twg0.upgradecapstone.device.domain.Device;
 
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class ReplyMessage extends AbstractMessage{
+public class ReplyMessage extends AbstractMessage {
 
 	private String title;
 	private Device device;
 	private int reply_sort;
 	private String fileId;
-	
+
 	@Builder
 	public ReplyMessage(String title, Device device, int reply_sort, String fileId) {
 		this.title = title;
@@ -21,6 +20,5 @@ public class ReplyMessage extends AbstractMessage{
 		this.reply_sort = reply_sort;
 		this.fileId = fileId;
 	}
-	
-	
+
 }

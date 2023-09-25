@@ -32,87 +32,87 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MqttUtils {
 
-	private static final String DEVICE_TOPIC_FILTER = "topic/device/"; 
+	private static final String DEVICE_TOPIC_FILTER = "topic/device/";
 	private static final String SPLIT_REGEX = "/";
-	
+
 	private final MessageCreateRequestFactory messageCreateRequestFactory = new MessageCreateRequestFactory();
-	
+
 	private final DeviceService deviceService;
 	private final ReplyMessageService replyMessageService;
 	private final DetectMessageService detectMessageService;
 	private final UrgentMessageService urgentMessageService;
 	private final NotificationService notificationService;
 	private final OutboundGateWay outboundGateWay;
-	
+
 	public void payloadToMessage(String payload) {
 		log.info("=============MQTT UTILS=============");
 		log.info("PAYLOAD : {}", payload);
-		
-		MessageCreateRequsetInterface createRequest 
-				= messageCreateRequestFactory.create(getMessageType(payload), parsePayload(payload));
-		
+
+		MessageCreateRequsetInterface createRequest
+			= messageCreateRequestFactory.create(getMessageType(payload), parsePayload(payload));
+
 		MessageType messageType = getMessageType(payload);
-		
-		if(messageType.equals(MessageType.URGENT)) {
-			
+
+		if (messageType.equals(MessageType.URGENT)) {
+
 			UrgentMessageCreateRequest urgentMessageCreateRequest = (UrgentMessageCreateRequest)createRequest;
 			urgentMessageCreateRequest.setDevice(deviceService.findDeviceById(getDeviceId(payload)));
-			
+
 			UrgentMessage urgentMessage = urgentMessageService.create(urgentMessageCreateRequest);
 			urgentMessageService.sendToMessage(urgentMessage);
-			
-		} else if(messageType.equals(MessageType.DETECT)){
-			
-			DetectMessageCreateRequest detectMessageCreateRequest = (DetectMessageCreateRequest) createRequest;
+
+		} else if (messageType.equals(MessageType.DETECT)) {
+
+			DetectMessageCreateRequest detectMessageCreateRequest = (DetectMessageCreateRequest)createRequest;
 			detectMessageCreateRequest.setDevice(deviceService.findDeviceById(getDeviceId(payload)));
-			
-			DetectMessage detectMessage = detectMessageService.create(detectMessageCreateRequest );
+
+			DetectMessage detectMessage = detectMessageService.create(detectMessageCreateRequest);
 			detectMessageService.sendToMessage(detectMessage);
-			
-		} else if(messageType.equals(MessageType.REPLY)){
-			
-			ReplyMessageCreateRequest replyMessageCreateRequest = (ReplyMessageCreateRequest) createRequest;
+
+		} else if (messageType.equals(MessageType.REPLY)) {
+
+			ReplyMessageCreateRequest replyMessageCreateRequest = (ReplyMessageCreateRequest)createRequest;
 			replyMessageCreateRequest.setDevice(deviceService.findDeviceById(getDeviceId(payload)));
 			replyMessageService.changeStatus(replyMessageCreateRequest);
-			
-		} else if(messageType.equals(MessageType.SETTING)){
-				
-			SettingRequestMessage settingMessage = (SettingRequestMessage) createRequest;
+
+		} else if (messageType.equals(MessageType.SETTING)) {
+
+			SettingRequestMessage settingMessage = (SettingRequestMessage)createRequest;
 			responseSettingMessage(settingMessage);
-			
+
 		}
 	}
-	
+
 	private void responseSettingMessage(SettingRequestMessage settingRequestMessage) {
 		SettingResponseMessage settingResponseMessage = deviceService.deviceConnectUser(settingRequestMessage);
-		
-//		log.info("SETTING MESSAGE DEVICE ID = {}",settingResponseMessage.getDeviceId());
-		
-		if(settingResponseMessage == null) {
+
+		//		log.info("SETTING MESSAGE DEVICE ID = {}",settingResponseMessage.getDeviceId());
+
+		if (settingResponseMessage == null) {
 			log.info("RESPONSE MESSAGE NULL");
-			outboundGateWay.sendToMqtt(SettingResponseMessage.connectFailPayload(), 
-										DEVICE_TOPIC_FILTER + settingRequestMessage.getDeviceId().toString());
-		}else {
+			outboundGateWay.sendToMqtt(SettingResponseMessage.connectFailPayload(),
+				DEVICE_TOPIC_FILTER + settingRequestMessage.getDeviceId().toString());
+		} else {
 			log.info("RESPONSE MESSAGE SUCCESS");
 			outboundGateWay.sendToMqtt(SettingResponseMessage.connectSuccessPayload(settingResponseMessage),
-										DEVICE_TOPIC_FILTER + settingResponseMessage.getDeviceId().toString());
+				DEVICE_TOPIC_FILTER + settingResponseMessage.getDeviceId().toString());
 		}
 	}
-	
+
 	private MessageType getMessageType(String payload) {
-		log.info("PAYLOAD_MESSAGE_TYPE : {}",parsePayload(payload).get(MessageFormat.MESSAGE_TYPE.getIndex()));
-		
-		String messageType = parsePayload(payload).get(MessageFormat.MESSAGE_TYPE.getIndex()); 
-		
-		if(messageType.equals(MessageType.URGENT.name())) {
+		log.info("PAYLOAD_MESSAGE_TYPE : {}", parsePayload(payload).get(MessageFormat.MESSAGE_TYPE.getIndex()));
+
+		String messageType = parsePayload(payload).get(MessageFormat.MESSAGE_TYPE.getIndex());
+
+		if (messageType.equals(MessageType.URGENT.name())) {
 			return MessageType.URGENT;
-		}else if(messageType.equals(MessageType.DETECT.name())){
+		} else if (messageType.equals(MessageType.DETECT.name())) {
 			return MessageType.DETECT;
-		}else if(messageType.equals(MessageType.REPLY.name())){
+		} else if (messageType.equals(MessageType.REPLY.name())) {
 			return MessageType.REPLY;
-		}else if(messageType.equals(MessageType.SETTING.name())) {
+		} else if (messageType.equals(MessageType.SETTING.name())) {
 			return MessageType.SETTING;
-		}else {
+		} else {
 			return null;
 		}
 	}
@@ -120,9 +120,9 @@ public class MqttUtils {
 	private Long getDeviceId(String payload) {
 		return Long.valueOf(parsePayload(payload).get(MessageFormat.DEVICE_ID.getIndex()));
 	}
-	
-	private List<String> parsePayload(String payload){
+
+	private List<String> parsePayload(String payload) {
 		return new ArrayList<>(Arrays.asList(payload.split(SPLIT_REGEX)));
 	}
-	
+
 }

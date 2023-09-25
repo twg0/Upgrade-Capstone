@@ -2,7 +2,6 @@ package com.twg0.upgradecapstone.message.domain;
 
 import java.time.LocalDateTime;
 
-
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -26,25 +25,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(value = AuditingEntityListener.class)
 @Getter
-public class UrgentMessage extends AbstractMessage{
-	
+public class UrgentMessage extends AbstractMessage {
+
 	@Id
 	@GeneratedValue
 	@Column(name = "MESSAGE_ID")
 	@NotNull
 	private Long id;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "DEVICE_ID")
 	private Device device;
 
 	@CreatedDate
 	private LocalDateTime createdTime;
-	
+
 	@Builder
 	public UrgentMessage(Device device) {
 		this.device = device;
 	}
-	
-	
+
 }

@@ -2,7 +2,6 @@ package com.twg0.upgradecapstone.message.domain;
 
 import java.time.LocalDateTime;
 
-
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -26,18 +25,18 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(value = AuditingEntityListener.class)
-public class DetectMessage extends AbstractMessage{
+public class DetectMessage extends AbstractMessage {
 
 	@Id
 	@GeneratedValue
 	@Column(name = "MESSAGE_ID")
 	@NotNull
 	private Long id;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "DEVICE_ID")
 	private Device device;
-	
+
 	@NotNull
 	private Double temperature;
 	@NotNull
@@ -48,13 +47,13 @@ public class DetectMessage extends AbstractMessage{
 	private Boolean detectionGasLeak;
 	@NotNull
 	private Boolean detectionAbnormalness;
-	
+
 	@CreatedDate
 	private LocalDateTime createdTime;
-	
+
 	@Builder
 	public DetectMessage(Device device, Double temperature, Double humidity,
-			Boolean detectionVibration, Boolean detectionGasLeak, Boolean detectionAbnormalness) {
+		Boolean detectionVibration, Boolean detectionGasLeak, Boolean detectionAbnormalness) {
 		this.device = device;
 		this.temperature = temperature;
 		this.humidity = humidity;
@@ -66,9 +65,8 @@ public class DetectMessage extends AbstractMessage{
 	@Override
 	public String toString() {
 		return "[DEVICE] : " + this.device.getId() + " /[TEMP] : " + this.temperature
-				+ " /[HUM] : " + this.humidity + " /[VIBRATION] : " + this.detectionVibration
-				+ " /[GASLEAK] : " + this.detectionGasLeak + " /[ABNOMALNESS] : " + this.detectionAbnormalness;
+			+ " /[HUM] : " + this.humidity + " /[VIBRATION] : " + this.detectionVibration
+			+ " /[GASLEAK] : " + this.detectionGasLeak + " /[ABNOMALNESS] : " + this.detectionAbnormalness;
 	}
-	
-	
+
 }

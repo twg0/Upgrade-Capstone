@@ -26,13 +26,13 @@ public class FileResponse {
 		this.contents = contents;
 		this.createdTime = createdTime;
 	}
-	
+
 	public static FileResponse from(File file) {
 		return FileResponse.builder()
-						.title(file.getTitle())
-						.contents(file.getContents())
-						.createdTime(file.getCreatedTime())
-						.build();
+			.title(file.getTitle())
+			.contents(file.getContents())
+			.createdTime(file.getCreatedTime())
+			.build();
 	}
-	
+
 }

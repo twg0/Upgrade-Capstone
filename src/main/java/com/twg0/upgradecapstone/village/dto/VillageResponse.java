@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class VillageResponse {
-	
+
 	private Long id;
 	private String nickname;
 	private AdminResponse admin;
@@ -21,10 +21,10 @@ public class VillageResponse {
 	private String state;
 	private String town;
 	private Location location;
-	
+
 	@QueryProjection
 	public VillageResponse(Long id, String nickname, AdminResponse admin, String city, String state, String town,
-			Location location) {
+		Location location) {
 		this.id = id;
 		this.nickname = nickname;
 		this.admin = admin;
@@ -33,16 +33,17 @@ public class VillageResponse {
 		this.town = town;
 		this.location = location;
 	}
-	
+
 	public static VillageResponse from(Village village) {
-		if(Optional.ofNullable(village.getAdmin()).isEmpty()) {
-			return new VillageResponse(village.getId(),village.getNickname() , null, 
-					village.getAddress().getCity(), village.getAddress().getState(), village.getAddress().getTown(), village.getLocation());
-		}
-		else {
-			return new VillageResponse(village.getId(),village.getNickname() , AdminResponse.from(village.getAdmin()), 
-					village.getAddress().getCity(), village.getAddress().getState(), village.getAddress().getTown(), village.getLocation());
+		if (Optional.ofNullable(village.getAdmin()).isEmpty()) {
+			return new VillageResponse(village.getId(), village.getNickname(), null,
+				village.getAddress().getCity(), village.getAddress().getState(), village.getAddress().getTown(),
+				village.getLocation());
+		} else {
+			return new VillageResponse(village.getId(), village.getNickname(), AdminResponse.from(village.getAdmin()),
+				village.getAddress().getCity(), village.getAddress().getState(), village.getAddress().getTown(),
+				village.getLocation());
 		}
 	}
-	
+
 }

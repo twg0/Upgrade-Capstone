@@ -28,54 +28,54 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 public class AdminController {
-	
+
 	private final AdminService adminService;
 	private final FileService fileService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<AdminResponse>> findAll(){
+	public ResponseEntity<List<AdminResponse>> findAll() {
 		log.info("이장 전체 조회");
 		return ResponseEntity.ok(adminService.findAll());
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<AdminResponse> findById(@PathVariable Long id){
+	public ResponseEntity<AdminResponse> findById(@PathVariable Long id) {
 		log.info("이장 조회");
 		return ResponseEntity.ok(adminService.findById(id));
 	}
-	
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> delete(@PathVariable Long id){
+	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("이장 삭제");
 		adminService.delete(id);
 		return ResponseEntity.ok("유저(이장)이 삭제되었습니다.");
 	}
-	
+
 	@PutMapping("/users/{id}")
-	public ResponseEntity<UserResponse> changeToUser(@PathVariable Long id){
+	public ResponseEntity<UserResponse> changeToUser(@PathVariable Long id) {
 		log.info("이장 유저로 변경");
 		return ResponseEntity.ok(adminService.changeToUser(id));
 	}
 
 	@PostMapping("/{id}/files")
-	public ResponseEntity<String> createFile(@PathVariable Long id, @RequestBody FileCreateRequest fileCreateRequest){
+	public ResponseEntity<String> createFile(@PathVariable Long id, @RequestBody FileCreateRequest fileCreateRequest) {
 		log.info("---CREATE FILE---");
-		
-		Long VillageId = fileCreateRequest.getVillageId(); 
+
+		Long VillageId = fileCreateRequest.getVillageId();
 		Long fileId = fileService.createAndPublish(id, fileCreateRequest);
-		
+
 		fileService.changeDeviceStatus(fileId, VillageId);
 		return ResponseEntity.ok("방송 파일이 등록되었습니다..");
 	}
-	
+
 	@GetMapping("/{id}/files")
-	public ResponseEntity<List<FileResponse>> getFiles(@PathVariable Long id){
+	public ResponseEntity<List<FileResponse>> getFiles(@PathVariable Long id) {
 		log.info("방송파일 조회");
 		return ResponseEntity.ok(adminService.getFiles(id));
 	}
-	
+
 	@GetMapping("/{id}/villages")
-	public ResponseEntity<VillageResponse> getVillage(@PathVariable Long id){
+	public ResponseEntity<VillageResponse> getVillage(@PathVariable Long id) {
 		log.info("관리중인 마을 조회");
 		return ResponseEntity.ok(adminService.getVillage(id));
 	}

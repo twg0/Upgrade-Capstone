@@ -18,12 +18,12 @@ public class DeviceUpdateRequest {
 	private Long memberId;
 	@NotNull
 	private Long villageId;
-	
+
 	public static Device toEntity(User user, Village village) {
 		return Device.builder()
-					.user(user)
-					.village(village)
-					.build();
+			.user(user)
+			.village(village)
+			.build();
 	}
-	
+
 }

@@ -11,17 +11,17 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class UserResponse {
-	
-	private Long id; 
+
+	private Long id;
 	private String username;
 	private String email;
 	private Role role;
 	private String phoneNumber;
 	private String address;
-	
+
 	@Builder
 	@QueryProjection
-	public UserResponse (Long id, String username, String email, Role role, String phoneNumber, String address) {
+	public UserResponse(Long id, String username, String email, Role role, String phoneNumber, String address) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
@@ -29,12 +29,12 @@ public class UserResponse {
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 	}
-	
+
 	public static UserResponse from(User user) {
-		if(user == null) return null;
-		return new UserResponse(user.getId(), user.getUsername(), user.getEmail(), 
-				user.getRole(), user.getPhoneNumber(), user.getAddress());
+		if (user == null)
+			return null;
+		return new UserResponse(user.getId(), user.getUsername(), user.getEmail(),
+			user.getRole(), user.getPhoneNumber(), user.getAddress());
 	}
 
-	
 }

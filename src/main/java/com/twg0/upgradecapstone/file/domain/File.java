@@ -2,7 +2,6 @@ package com.twg0.upgradecapstone.file.domain;
 
 import java.time.LocalDateTime;
 
-
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -34,34 +33,33 @@ public class File {
 	@Column(name = "FILE_ID")
 	@NotNull
 	private Long id;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "USER_ID")
 	@NotNull
 	private Admin admin;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "VILLAGE_ID")
 	@NotNull
 	private Village village;
-	
 
 	@NotNull
 	@Size(max = 30)
 	@Column(length = 30)
 	private String title;
-	
+
 	@NotNull
 	@Size(max = 100)
 	@Column(length = 100)
 	private String contents;
-	
+
 	@CreatedDate
 	private LocalDateTime createdTime;
 
 	@Builder
 	public File(Long id, Admin admin, Village village, String title,
-			String contents, LocalDateTime createdTime) {
+		String contents, LocalDateTime createdTime) {
 		this.admin = admin;
 		this.village = village;
 		this.title = title;
@@ -69,5 +67,4 @@ public class File {
 		this.createdTime = createdTime;
 	}
 
-	
 }

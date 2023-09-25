@@ -25,14 +25,14 @@ public class DeviceUserCreateRequest {
 	private String phoneNumber;
 	@NotBlank
 	private String address;
-	
+
 	public User toEntity() {
 		return User.builder()
-				.username(username)
-				.phoneNumber(phoneNumber)
-				.email(UUID.randomUUID().toString().substring(0, 29))
-				.address(address)
-				.role(Role.ROLE_USER)
-				.build();
+			.username(username)
+			.phoneNumber(phoneNumber)
+			.email(UUID.randomUUID().toString().substring(0, 29))
+			.address(address)
+			.role(Role.ROLE_USER)
+			.build();
 	}
 }
