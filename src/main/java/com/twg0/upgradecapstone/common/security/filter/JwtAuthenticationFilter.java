@@ -9,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.twg0.upgradecapstone.common.security.auth.PrincipalDetails;
@@ -19,13 +20,17 @@ import com.twg0.upgradecapstone.user.vo.UserLoginVO;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Component
+@RequiredArgsConstructor
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 	private final UserService userService;
@@ -33,9 +38,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Value("${jwt.secret}")
 	private String SECRET_KEY;
 
-	public JwtAuthenticationFilter(UserService userService) {
-		this.userService = userService;
-
+	@PostConstruct
+	public void init() {
 		setFilterProcessesUrl("/api/login");
 	}
 
